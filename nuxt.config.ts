@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// defineNuxtConfig is automatically available in the Nuxt context
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
@@ -24,6 +25,14 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'netlify',
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    output: {
+      dir: '.output',
+      publicDir: '.output/public'
+    }
+  },
+  ssr: true,
+  routeRules: {
+    '/**': { prerender: true }
   }
 })

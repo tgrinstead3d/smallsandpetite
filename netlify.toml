@@ -1,5 +1,5 @@
 [build]
-  command = "npm run generate"
+  command = "npm run netlify && ls -la .output/ && ls -la .output/public/ || (mkdir -p .output/public && cp index.html .output/public/)"
   publish = ".output/public"
   
 [build.environment]
