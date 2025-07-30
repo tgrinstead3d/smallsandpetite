@@ -139,7 +139,7 @@ const toggleProducts = () => {
     transition: background-color 0.3s ease;
 }
 
-.dropdown-item:hover {
-    background-color: rgba(117, 116, 114, 0.1);
-}
+/* .dropdown-item:hover { */
+/*    background-color: rgba(117, 116, 114, 0.1); */
+/*  } */
 </style>
