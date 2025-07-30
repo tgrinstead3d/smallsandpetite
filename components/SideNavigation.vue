@@ -3,14 +3,18 @@
         <div class="side-nav-container">
             <div class="menu-items">
                 <div class="menu-item dropdown">
-                    <div class="menu-header" @click="toggleProducts">
+                    <div class="menu-header">
                         <span>PRODUCTS</span>
-                        <span class="dropdown-icon">{{ productsOpen ? '▲' : '▼' }}</span>
                     </div>
                     <div class="dropdown-content" v-if="productsOpen">
-                        <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
+                        </div> 
+                    <div class="dropdown-container">
+                        <div class="dropdown-line">
+                    <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
                             {{ item }}
                         </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -30,13 +34,12 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
-const productsOpen = ref(false);
+const productsOpen = ref(true);
 const productItems = [
     'Birthdays',
     'Birth Announcements',
@@ -72,7 +75,7 @@ const toggleProducts = () => {
 }
 
 .side-nav-container {
-    padding: 20px 0;
+    padding: 20px, 0;
     width: 100%;
 }
 
@@ -103,8 +106,22 @@ const toggleProducts = () => {
     background-color: rgba(117, 116, 114, 0.1);
 }
 
+.dropdown-line {
+    
+    width: 1px;
+    background-color:  #757472;
+    min-height: 80px;
+    margin-left: 15px;
+    
+}
+
 .dropdown-icon {
     font-size: 12px;
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .dropdown-content {
@@ -114,7 +131,7 @@ const toggleProducts = () => {
 }
 
 .dropdown-item {
-    padding: 12px 20px 12px 35px;
+    padding: 12px 20px 12px 20px;
     font-family: 'proxima-nova', sans-serif;
     font-weight: 400;
     color: #757472;
