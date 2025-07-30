@@ -26,6 +26,7 @@
                 <div class="menu-item">
                     <div class="menu-header">
                         <span>FAQ</span>
+                        <p>Secret Message</p>
                     </div>
                 </div>
             </div>
