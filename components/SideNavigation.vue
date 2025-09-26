@@ -9,10 +9,11 @@
                     <div class="dropdown-content" v-if="productsOpen">
                         </div> 
                     <div class="dropdown-container">
-                        <div class="dropdown-line">
-                    <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
-                            {{ item }}
-                        </div>
+                        <div class="dropdown-line"></div>
+                        <div class="dropdown-list">
+                            <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
+                                {{ item }}
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -61,11 +62,9 @@ const toggleProducts = () => {
 .side-nav {
     width: 250px;
     background-color: white;
-    height: calc(100vh - 80px);
-    /* Subtract top navbar height */
+    min-height: calc(100vh - 80px);
     position: fixed;
     top: 80px;
-    /* Position below top navbar */
     left: 0;
     border-right: 1px solid #757472;
     display: flex;
@@ -122,6 +121,8 @@ const toggleProducts = () => {
 .dropdown-container {
     display: flex;
     flex-direction: row;
+    padding: 0 20px 0 30px;
+    gap: 16px;
 }
 
 .dropdown-content {
@@ -130,16 +131,41 @@ const toggleProducts = () => {
     background-color: white;
 }
 
+.dropdown-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .dropdown-item {
-    padding: 12px 20px 12px 20px;
+    padding: 12px 20px;
     font-family: 'proxima-nova', sans-serif;
     font-weight: 400;
     color: #757472;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    position: relative;
+    transition: color 0.25s ease, background-color 0.25s ease;
 }
 
-/* .dropdown-item:hover { */
-/*    background-color: rgba(117, 116, 114, 0.1); */
-/*  } */
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(117, 116, 114, 0), rgba(117, 116, 114, 0.12), rgba(117, 116, 114, 0));
+    opacity: 0;
+    transform: scaleX(0.7);
+    transform-origin: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: -1;
+}
+
+.dropdown-item:hover {
+    color: #5f5d5b;
+}
+
+.dropdown-item:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
 </style>

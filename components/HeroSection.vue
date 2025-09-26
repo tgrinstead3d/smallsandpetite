@@ -6,16 +6,6 @@
                 <img :src="image" alt="Hero image" class="slide-image" />
             </div>
 
-            <div class="hero-content">
-                <h1 class="hero-title">Celebrate Big!</h1>
-                <p class="hero-description">
-                    Personalized yard signs for themed birthdays, announcement, and showers! Our themes are fit for all
-                    ages!
-                    Each illustrative theme comes with a unique set of weather-resistant yard signs and metal stakes.
-                    Simple, durable, and easy to install, our themed yard signs make a big impression.
-                </p>
-            </div>
-
             <div class="controls">
                 <div class="dots">
                     <span v-for="(image, index) in images" :key="index" class="dot"
@@ -27,15 +17,116 @@
                     <button class="arrow next" @click="nextSlide">&gt;</button>
                 </div>
             </div>
+
         </div>
 
-        <a href="#" class="instagram-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-            </svg>
-            <span>Follow Us</span>
-        </a>
+        <main class="page-content">
+            <section class="celebrate-section">
+                <div class="celebrate-content">
+                    <h1 class="celebrate-title">Celebrate Big!</h1>
+                    <div class="celebrate-divider" aria-hidden="true"></div>
+                    <p class="celebrate-description">
+                        Personalized yard signs for themed birthdays, announcement, and showers! Our themes are fit for
+                        all ages! Each illustrative theme comes with a unique set of weather-resistant yard signs and
+                        metal stakes. Simple, durable, and easy to install, our themed yard signs make a big impression.
+                    </p>
+                </div>
+            </section>
+
+            <section class="shop-section">
+                <div class="section-header">
+                    <h2 class="section-title">Shop by Occasion</h2>
+                    <p class="section-subtitle">Choose from our curated celebrations to make your next milestone
+                        unforgettable.</p>
+                </div>
+                <div class="occasion-grid">
+                    <article v-for="(occasion, index) in occasions" :key="index" class="occasion-card">
+                        <img :src="occasion.image" :alt="occasion.title" class="occasion-image" />
+                        <div class="occasion-content">
+                            <h3>{{ occasion.title }}</h3>
+                            <p>{{ occasion.description }}</p>
+                        </div>
+                    </article>
+                </div>
+                <button class="secondary-button">Browse All Occasions</button>
+            </section>
+
+            <section class="testimonials-section">
+                <div class="section-header">
+                    <h2 class="section-title">Testimonials</h2>
+                    <p class="section-subtitle">Families and friends love celebrating with Smalls &amp; Petite.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <article v-for="(testimonial, index) in testimonials" :key="index" class="testimonial-card">
+                        <p class="testimonial-quote">“{{ testimonial.quote }}”</p>
+                        <div class="testimonial-author">{{ testimonial.author }}</div>
+                        <div class="testimonial-detail">{{ testimonial.detail }}</div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="about-content">
+                    <div class="about-media">
+                        <img src="~/assets/logo.png" alt="Smalls and Petite logo"
+                            class="about-image" />
+                    </div>
+                    <div class="about-divider" aria-hidden="true"></div>
+                    <div class="about-text">
+                        <h2 class="section-title">Who We Are</h2>
+                        <p><span class="about-greeting">Hello,</span><br />
+                            Thanks for getting to know us. Our story goes back 15 years. Ambitious and newly graduated
+                            from design schools, we met in a small design firm in Dublin, Ohio.</p>
+                        <p>After many long nights and countless deadlines, we fell in love with the design process and
+                            the ultimate goal of creating beautiful spaces. Our partnership stems from a shared passion
+                            for design, our love of family and an unwavering friendship.</p>
+                        <p>We're excited to see what the next 15 years bring!</p>
+                        <p class="about-signature">Megan "Smalls" and Caroline "Petite"</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <img src="~/assets/logo.png" alt="Smalls and Petite" class="footer-logo-image" />
+                        <p>Custom yard greetings for life’s biggest moments.</p>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Occasions</h4>
+                            <ul>
+                                <li v-for="(occasion, index) in occasions" :key="`footer-${index}`">{{ occasion.title }}</li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Company</h4>
+                            <ul>
+                                <li>About</li>
+                                <li>Testimonials</li>
+                                <li>FAQ</li>
+                                <li>Contact</li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Connect</h4>
+                            <ul>
+                                <li>Instagram</li>
+                                <li>Email</li>
+                                <li>Facebook</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; {{ currentYear }} Smalls &amp; Petite. All rights reserved.</span>
+                    <div class="footer-meta">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </footer>
+        </main>
     </div>
 </template>
 
@@ -110,6 +201,49 @@ const setSlide = (index) => {
     currentSlide.value = index;
 };
 
+const occasions = [
+    {
+        title: 'Birthdays',
+        description: 'Make every age feel larger than life with colorful, custom yard greetings.',
+        image: 'https://via.placeholder.com/320x220?text=Birthdays'
+    },
+    {
+        title: 'Baby Showers',
+        description: 'Welcome new arrivals with sweet storks, tiny shoes, and a burst of joy.',
+        image: 'https://via.placeholder.com/320x220?text=Baby+Showers'
+    },
+    {
+        title: 'Graduations',
+        description: 'Celebrate the grad with school colors, caps, and cheers from the lawn.',
+        image: 'https://via.placeholder.com/320x220?text=Graduations'
+    },
+    {
+        title: 'Holidays',
+        description: 'Deck the yard for every season with festive displays and twinkling details.',
+        image: 'https://via.placeholder.com/320x220?text=Holidays'
+    }
+];
+
+const testimonials = [
+    {
+        quote: 'The setup was seamless and the signs were a huge hit with our guests!',
+        author: 'Jasmine K.',
+        detail: 'Birthday Celebration'
+    },
+    {
+        quote: 'Our graduation photos turned out amazing thanks to the vibrant display.',
+        author: 'The Nguyen Family',
+        detail: 'High School Graduation'
+    },
+    {
+        quote: 'They took care of everything from delivery to pick-up. Highly recommend!',
+        author: 'Melissa R.',
+        detail: 'Baby Shower'
+    }
+];
+
+const currentYear = new Date().getFullYear();
+
 // Auto-advance slides
 onMounted(() => {
     preloadFonts();
@@ -132,18 +266,21 @@ onBeforeUnmount(() => {
 @import url('https://use.typekit.net/xts7lxl.css');
 
 .hero-section {
-    position: absolute;
+    position: relative;
     width: calc(100% - 250px);
-    height: calc(100vh - 80px);
-    left: 250px;
-    top: 80px;
-    overflow: hidden;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
 }
 
 .slideshow-container {
     width: 100%;
-    height: 100%;
     position: relative;
+    height: clamp(420px, 70vh, 720px);
+    flex-shrink: 0;
 }
 
 .slide {
@@ -166,35 +303,325 @@ onBeforeUnmount(() => {
     object-fit: cover;
 }
 
-.hero-content {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 600px;
-    z-index: 5;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+.page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 0;
+    flex: 1 1 auto;
+}
+
+.celebrate-section {
+    background-color: white;
+    padding: 60px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    z-index: 6;
+    border-bottom: 1px solid #e6e5e3;
+}
+
+.celebrate-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.celebrate-title {
+    flex: 0 0 30%;
+    font-family: 'Satisfy', 'satisfy-fallback', cursive;
+    font-size: 3.5rem;
+    font-weight: normal;
+    margin: 0;
+    color: #757472;
+}
+
+.celebrate-description {
+    flex: 1 1 auto;
+    font-family: 'Proxima Nova', 'proxima-nova', 'proxima-nova-fallback', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #757472;
+    margin: 0;
+}
+
+.celebrate-divider {
+    width: 1px;
+    background-color: #757472;
+    opacity: 0.6;
+    align-self: stretch;
+}
+
+.shop-section,
+.testimonials-section,
+.about-section {
+    padding: 0 60px;
+}
+
+.shop-section .section-header,
+.testimonials-section .section-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+}
+
+.section-title {
+    font-family: 'Relation One', sans-serif;
+    font-weight: 300;
+    font-size: 2.4rem;
+    color: #757472;
+    margin-bottom: 12px;
+    letter-spacing: 0.35rem;
+    text-transform: uppercase;
     text-align: center;
 }
 
-.hero-title {
-    font-family: 'Satisfy', 'satisfy-fallback', cursive;
-    font-size: 4rem;
-    font-weight: normal;
-    margin-bottom: 25px;
-    color: #333;
-    line-height: 1.2;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+.section-subtitle {
+    font-family: 'Proxima Nova', 'proxima-nova', 'proxima-nova-fallback', Helvetica, Arial, sans-serif;
+    font-size: 1.05rem;
+    color: #757472;
+    margin: 0;
+    line-height: 1.7;
 }
 
-.hero-description {
+.occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.occasion-card {
+    background-color: #f9f8f6;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+}
+
+.occasion-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.occasion-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.occasion-content h3 {
+    font-family: 'Relation Two', sans-serif;
+    color: #757472;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.occasion-content p {
     font-family: 'Proxima Nova', 'proxima-nova', 'proxima-nova-fallback', Helvetica, Arial, sans-serif;
-    font-size: 1rem;
+    color: #757472;
+    font-size: 0.95rem;
     line-height: 1.6;
-    color: #333;
+    margin: 0;
+}
+
+.secondary-button {
+    align-self: center;
+    margin-top: 40px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #757472;
+    color: #757472;
+    font-family: 'Proxima Nova', 'proxima-nova', 'proxima-nova-fallback', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+    background-color: #757472;
+    color: white;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.testimonial-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #757472;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.testimonial-detail {
+    font-size: 0.9rem;
+    color: #9b9a98;
+}
+
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.about-text {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #757472;
+    padding: 40px 60px 40px 80px;
+}
+
+.about-text p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1rem;
+    font-family: 'Proxima Nova', 'proxima-nova', 'proxima-nova-fallback', Helvetica, Arial, sans-serif;
+}
+
+.about-greeting {
+    font-family: 'Relation One', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.about-signature {
+    font-weight: 700;
+}
+
+
+.about-media {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 80px 40px 60px;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 320px;
+}
+
+.about-divider {
+    position: absolute;
+    top: 12%;
+    bottom: 12%;
+    left: 50%;
+    width: 1px;
+    background-color: #757472;
+    opacity: 0.6;
+}
+
+.site-footer {
+    background-color: #f9f8f6;
+    padding: 60px;
+    color: #757472;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    max-width: 320px;
+}
+
+.footer-logo-image {
+    max-width: 220px;
+    margin-bottom: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-column h4 {
+    margin: 0 0 16px 0;
+    font-family: 'Relation Two', sans-serif;
+    font-size: 1.1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.9rem;
+}
+
+.footer-meta {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-meta a {
+    color: #757472;
+    text-decoration: none;
+    position: relative;
+}
+
+.footer-meta a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 1px;
+    background-color: #b8b7b5;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.footer-meta a:hover::after {
+    transform: scaleX(1);
 }
 
 .controls {

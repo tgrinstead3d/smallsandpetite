@@ -23,27 +23,22 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden;
   font-family: 'proxima-nova', Arial, sans-serif;
 }
 
 .app-container {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .content-area {
-  position: absolute;
-  top: 80px;
-  left: 250px;
   width: calc(100% - 250px);
-  height: calc(100vh - 80px);
+  margin-left: 250px;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto;
-  z-index: 1;
+  margin-top: 80px;
 }
 </style>
