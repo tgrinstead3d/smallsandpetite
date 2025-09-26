@@ -3,7 +3,6 @@
     <FontLoader />
     <NuxtRouteAnnouncer />
     <Navigation />
-    <SideNavigation />
     <HeroSection />
     <div class="content-area">
       <NuxtPage />
@@ -15,7 +14,6 @@
 import FontLoader from '~/components/FontLoader.vue';
 import HeroSection from '~/components/HeroSection.vue';
 import Navigation from '~/components/Navigation.vue';
-import SideNavigation from '~/components/SideNavigation.vue';
 </script>
 
 <style>
@@ -28,6 +26,10 @@ body {
   font-family: 'proxima-nova', Arial, sans-serif;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 .app-container {
   position: relative;
   width: 100%;
@@ -35,10 +37,24 @@ body {
 }
 
 .content-area {
-  width: calc(100% - 250px);
-  margin-left: 250px;
-  padding: 20px;
+  width: 100%;
+  margin-left: 0;
+  padding: 20px 48px 80px;
   box-sizing: border-box;
   margin-top: 80px;
+}
+
+@media (max-width: 1024px) {
+  .content-area {
+    padding: 20px 32px 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .content-area {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px 24px 60px;
+  }
 }
 </style>

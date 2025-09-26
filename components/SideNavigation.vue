@@ -168,4 +168,38 @@ const toggleProducts = () => {
     opacity: 1;
     transform: scaleX(1);
 }
+
+@media (max-width: 900px) {
+    .side-nav {
+        position: static;
+        width: 100%;
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #757472;
+        padding-top: 80px;
+    }
+
+    .side-nav-container {
+        padding: 16px 24px;
+    }
+
+    .menu-header {
+        padding: 12px 0;
+        font-size: 14px;
+    }
+
+    .dropdown-container {
+        padding: 0;
+        gap: 12px;
+    }
+
+    .dropdown-line {
+        margin-left: 0;
+    }
+
+    .dropdown-item {
+        padding: 8px 0;
+        font-size: 13px;
+    }
+}
 </style>

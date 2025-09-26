@@ -1,3 +1,178 @@
+.celebrate-divider {
+    width: 1px;
+    background-color: #757472;
+    opacity: 0.6;
+    align-self: stretch;
+}
+
+@media (max-width: 1200px) {
+    .celebrate-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .celebrate-title {
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .celebrate-divider {
+        display: none;
+    }
+
+    .celebrate-description {
+        max-width: 600px;
+    }
+
+    .shop-section,
+    .testimonials-section,
+    .about-section {
+        padding: 0 40px;
+    }
+
+    .section-title {
+        font-size: 2.1rem;
+        letter-spacing: 0.28rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .celebrate-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .celebrate-title {
+        flex: none;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .celebrate-divider {
+        display: none;
+    }
+
+    .celebrate-description {
+        width: 100%;
+        max-width: none;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        text-align: left;
+        gap: 24px;
+    }
+
+    .about-divider,
+    .about-media {
+        display: none;
+    }
+
+    .about-text {
+        padding: 0;
+    }
+
+    .about-text .section-title {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 80px;
+    }
+
+    .slideshow-container {
+        height: 60vh;
+        min-height: 360px;
+    }
+
+    .shop-section,
+    .testimonials-section,
+    .about-section {
+        padding: 0 24px;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+        letter-spacing: 0.22rem;
+    }
+
+    .secondary-button {
+        margin-top: 24px;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .slideshow-container {
+        height: 55vh;
+        min-height: 300px;
+    }
+
+    .celebrate-section {
+        padding: 40px 20px;
+    }
+
+    .celebrate-title {
+        font-size: 2.8rem;
+    }
+
+    .celebrate-description {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    .about-text {
+        padding: 20px 0;
+    }
+
+    .site-footer {
+        padding: 40px 20px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .footer-links {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
 <template>
     <div class="hero-section">
         <div class="slideshow-container">
@@ -267,11 +442,11 @@ onBeforeUnmount(() => {
 
 .hero-section {
     position: relative;
-    width: calc(100% - 250px);
+    width: 100%;
     background-color: white;
     display: flex;
     flex-direction: column;
-    margin-left: 250px;
+    margin-left: 0;
     margin-top: 80px;
     min-height: calc(100vh - 80px);
 }
@@ -344,6 +519,7 @@ onBeforeUnmount(() => {
     line-height: 1.8;
     color: #757472;
     margin: 0;
+    max-width: 600px;
 }
 
 .celebrate-divider {
