@@ -7,20 +7,19 @@
                         <span>PRODUCTS</span>
                     </div>
                     <div class="dropdown-content" v-if="productsOpen">
-                        </div> 
-                    <div class="dropdown-container">
-                        <div class="dropdown-line"></div>
-                        <div class="dropdown-list">
-                            <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
-                                {{ item }}
+                        <div class="dropdown-container">
+                            <div class="dropdown-line"></div>
+                            <div class="dropdown-list">
+                                <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
+                                    {{ item }}
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-header">
-                        <span>INSTALLATION GUIDE</span>
+                        <NuxtLink to="/installation-guide">INSTALLATION GUIDE</NuxtLink>
                     </div>
                 </div>
                 <div class="menu-item">
@@ -30,11 +29,12 @@
                 </div>
                 <div class="menu-item">
                     <div class="menu-header">
-                        <span>FAQ</span>
+                        <NuxtLink to="/faq">FAQ</NuxtLink>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <script setup>
@@ -74,7 +74,7 @@ const toggleProducts = () => {
 }
 
 .side-nav-container {
-    padding: 20px, 0;
+    padding: 20px 0;
     width: 100%;
 }
 
@@ -82,6 +82,9 @@ const toggleProducts = () => {
     display: flex;
     flex-direction: column;
     width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .menu-item {
@@ -103,6 +106,15 @@ const toggleProducts = () => {
 
 .menu-header:hover {
     background-color: rgba(117, 116, 114, 0.1);
+}
+
+.menu-header a {
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dropdown-line {
@@ -147,6 +159,11 @@ const toggleProducts = () => {
     transition: color 0.25s ease, background-color 0.25s ease;
 }
 
+.dropdown-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .dropdown-item::before {
     content: '';
     position: absolute;
@@ -171,35 +188,7 @@ const toggleProducts = () => {
 
 @media (max-width: 900px) {
     .side-nav {
-        position: static;
-        width: 100%;
-        min-height: auto;
-        border-right: none;
-        border-bottom: 1px solid #757472;
-        padding-top: 80px;
-    }
-
-    .side-nav-container {
-        padding: 16px 24px;
-    }
-
-    .menu-header {
-        padding: 12px 0;
-        font-size: 14px;
-    }
-
-    .dropdown-container {
-        padding: 0;
-        gap: 12px;
-    }
-
-    .dropdown-line {
-        margin-left: 0;
-    }
-
-    .dropdown-item {
-        padding: 8px 0;
-        font-size: 13px;
+        display: none;
     }
 }
 </style>

@@ -447,8 +447,6 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     margin-left: 0;
-    margin-top: 80px;
-    min-height: calc(100vh - 80px);
 }
 
 .slideshow-container {
@@ -721,6 +719,7 @@ onBeforeUnmount(() => {
     background-color: #f9f8f6;
     padding: 60px;
     color: #757472;
+    margin-top: 0;
 }
 
 .footer-top {

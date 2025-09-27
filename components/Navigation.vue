@@ -3,7 +3,9 @@
         <div class="navbar-container">
             <div class="logo-container">
                 <div class="logo">
-                    <img src="~/assets/logo.png" alt="Logo" class="logo-image" />
+                    <NuxtLink to="/" class="logo-link" aria-label="Go to homepage">
+                        <img src="~/assets/logo.png" alt="Logo" class="logo-image" />
+                    </NuxtLink>
                 </div>
             </div>
 
@@ -42,7 +44,7 @@
                         </svg>
                         <span>Instagram</span>
                     </a>
-                    <button class="contact-button">Contact Us</button>
+                    <button class="contact-button" @click="closeMenu">Contact Us</button>
                 </div>
 
                 <div class="mobile-menu-section">
@@ -57,9 +59,11 @@
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-heading">Explore</div>
                     <div class="mobile-link-list">
-                        <div class="mobile-link-item" v-for="(link, index) in secondaryLinks" :key="`link-${index}`">
-                            {{ link }}
-                        </div>
+                        <NuxtLink class="mobile-link-item" v-for="(link, index) in secondaryLinks"
+                            :key="`link-${index}`" :to="link.to" @click="closeMenu" :target="link.external ? '_blank' : undefined"
+                            :rel="link.external ? 'noopener' : undefined">
+                            {{ link.label }}
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
@@ -84,7 +88,11 @@ const productItems = [
     'Custom'
 ];
 
-const secondaryLinks = ['Installation Guide', 'Contact', 'FAQ'];
+const secondaryLinks = [
+    { label: 'Installation Guide', to: '/installation-guide' },
+    { label: 'Contact', to: '/contact' },
+    { label: 'FAQ', to: '/faq' }
+];
 
 const toggleMenu = () => {
     mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -132,6 +140,11 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+}
+
+.navbar-container a {
+    text-decoration: none;
 }
 
 .logo-container {
@@ -146,6 +159,10 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo-link {
+    display: inline-flex;
 }
 
 .logo-image {
@@ -219,17 +236,19 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: 8px;
     background-color: #757472;
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 4px;
     font-family: 'proxima-nova', sans-serif;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    border: none;
 }
 
 .instagram-link:hover {
     background-color: #5f5d5b;
+    color: #ffffff;
 }
 
 .instagram-icon {
@@ -313,12 +332,6 @@ onBeforeUnmount(() => {
     color: #757472;
     font-size: 0.95rem;
     transition: color 0.2s ease;
-    cursor: pointer;
-}
-
-.mobile-product-item:hover,
-.mobile-link-item:hover {
-    color: #5f5d5b;
 }
 
 .menu-fade-enter-active,
@@ -347,11 +360,12 @@ onBeforeUnmount(() => {
         left: 0;
         top: 0;
         width: 100%;
-        padding: 0 16px;
+        padding: 0;
     }
 
     .navbar-container {
         gap: 16px;
+        padding: 0 24px;
     }
 
     .logo-container {
