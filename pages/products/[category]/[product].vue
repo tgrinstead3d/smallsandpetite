@@ -9,7 +9,7 @@
     </ProductHero>
 
     <main class="product-page__content">
-      <ProductVariants :variants="product.variants" />
+      <ProductVariants :variants="product.variants" :product="product" />
 
       <section class="product-page__details">
         <h2 class="product-page__details-title">What’s Included</h2>
@@ -24,6 +24,8 @@
         </ul>
       </section>
     </main>
+
+    <FooterSection />
   </div>
   <ErrorSection v-else description="We couldn’t find this product. Please select another collection from the menu." />
 </template>
@@ -34,6 +36,7 @@ import { useRoute } from 'vue-router'
 import ProductHero from '~/components/ProductHero.vue'
 import ProductVariants from '~/components/ProductVariants.vue'
 import ErrorSection from '~/components/ErrorSection.vue'
+import FooterSection from '~/components/FooterSection.vue'
 import { findCategoryBySlug } from '~/data/categories'
 import { useProducts } from '~/composables/useProducts'
 
@@ -60,11 +63,11 @@ const displayTags = computed(() => {
 .product-page {
   display: flex;
   flex-direction: column;
-  gap: 72px;
-  padding: 100px 60px 80px;
-  max-width: 1460px;
-  width: 100%;
+  gap: clamp(48px, 6vw, 80px);
+  width: min(1600px, 100%);
   margin: 0 auto;
+  padding: clamp(48px, 8vw, 120px) clamp(24px, 6vw, 80px) clamp(40px, 6vw, 80px);
+  box-sizing: border-box;
 }
 
 .product-meta {
@@ -83,21 +86,23 @@ const displayTags = computed(() => {
 }
 
 .product-page__content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  align-items: flex-start;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 5vw, 48px);
+  width: 100%;
 }
 
 .product-page__details {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 36px;
+  padding: clamp(32px, 3vw, 40px);
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 244, 241, 0.96));
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(214, 210, 203, 0.5);
+  width: 100%;
+  margin: 0;
 }
 
 .product-page__details-title {
@@ -132,14 +137,11 @@ const displayTags = computed(() => {
 
 @media (max-width: 1200px) {
   .product-page__content {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
-}
 
-@media (max-width: 1024px) {
-  .product-page {
-    margin-left: 0;
-    padding: 100px 40px 70px;
+  .product-page__details {
+    align-self: auto;
   }
 }
 

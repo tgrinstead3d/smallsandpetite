@@ -62,15 +62,17 @@ const heroStyles = computed(() => ({
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   align-items: center;
-  gap: 60px;
-  padding: 80px;
+  gap: clamp(32px, 4vw, 60px);
+  padding: clamp(48px, 6vw, 80px);
   border-radius: 32px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
   color: #5f5d5b;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .product-hero::after {
@@ -153,8 +155,8 @@ const heroStyles = computed(() => ({
 
 @media (max-width: 1024px) {
   .product-hero {
-    padding: 60px;
-    gap: 40px;
+    width: 100%;
+    margin-left: 0;
   }
 }
 
@@ -162,6 +164,7 @@ const heroStyles = computed(() => ({
   .product-hero {
     padding: 40px;
     gap: 32px;
+    grid-template-columns: 1fr;
   }
 
   .product-hero__title {
@@ -176,6 +179,12 @@ const heroStyles = computed(() => ({
 @media (max-width: 576px) {
   .product-hero {
     padding: 32px;
+  }
+
+  .product-hero__content,
+  .product-hero__art,
+  .product-hero__image {
+    width: 100%;
   }
 
   .product-hero__art {
