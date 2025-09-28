@@ -11,7 +11,9 @@
                             <div class="dropdown-line"></div>
                             <div class="dropdown-list">
                                 <div class="dropdown-item" v-for="(item, index) in productItems" :key="index">
-                                    {{ item }}
+                                    <NuxtLink :to="item.href">
+                                        {{ item.label }}
+                                    </NuxtLink>
                                 </div>
                             </div>
                         </div>
@@ -42,15 +44,15 @@ import { ref } from 'vue';
 
 const productsOpen = ref(true);
 const productItems = [
-    'Birthdays',
-    'Birth Announcements',
-    'Graduations',
-    'School Events',
-    'Showers',
-    'Milestones',
-    'Holidays',
-    'Weddings',
-    'Custom'
+    { label: 'Birthdays', href: '/products/birthdays' },
+    { label: 'Birth Announcements', href: '/products/birth-announcements' },
+    { label: 'Graduations', href: '/products/graduations' },
+    { label: 'School Events', href: '/products/school-events' },
+    { label: 'Showers', href: '/products/showers' },
+    { label: 'Milestones', href: '/products/milestones' },
+    { label: 'Holidays', href: '/products/holidays' },
+    { label: 'Weddings', href: '/products/weddings' },
+    { label: 'Custom', href: '/products/custom' }
 ];
 
 const toggleProducts = () => {
