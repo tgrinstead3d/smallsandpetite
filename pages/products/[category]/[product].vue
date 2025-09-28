@@ -62,9 +62,9 @@ const displayTags = computed(() => {
   flex-direction: column;
   gap: 72px;
   padding: 100px 60px 80px;
-  margin-left: 260px;
-  max-width: 1200px;
-  margin-right: auto;
+  max-width: 1460px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .product-meta {
