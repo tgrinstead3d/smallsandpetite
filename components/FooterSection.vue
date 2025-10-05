@@ -10,21 +10,28 @@
         <div class="footer-column">
           <h4>Occasions</h4>
           <ul>
-            <li v-for="(occasion, index) in footerOccasions" :key="`footer-occasion-${index}`">{{ occasion }}</li>
+            <li v-for="link in footerOccasions" :key="link.label">
+              <NuxtLink :to="link.href" class="footer-link">{{ link.label }}</NuxtLink>
+            </li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h4>Company</h4>
           <ul>
-            <li v-for="(item, index) in footerCompany" :key="`footer-company-${index}`">{{ item }}</li>
+            <li v-for="link in footerCompany" :key="link.label">
+              <NuxtLink v-if="!link.external" :to="link.href" class="footer-link">{{ link.label }}</NuxtLink>
+              <a v-else :href="link.href" target="_blank" rel="noopener" class="footer-link">{{ link.label }}</a>
+            </li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h4>Connect</h4>
           <ul>
-            <li v-for="(item, index) in footerConnect" :key="`footer-connect-${index}`">{{ item }}</li>
+            <li v-for="link in footerConnect" :key="link.label">
+              <a :href="link.href" class="footer-link" target="_blank" rel="noopener">{{ link.label }}</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -44,19 +51,29 @@
 const currentYear = new Date().getFullYear();
 
 const footerOccasions = [
-  'Birthdays',
-  'Birth Announcements',
-  'Graduations',
-  'School Events',
-  'Showers',
-  'Milestones',
-  'Holidays',
-  'Weddings',
-  'Custom'
+  { label: 'Birthdays', href: '/products/birthdays' },
+  { label: 'Birth Announcements', href: '/products/birth-announcements' },
+  { label: 'Graduations', href: '/products/graduations' },
+  { label: 'School Events', href: '/products/school-events' },
+  { label: 'Showers', href: '/products/showers' },
+  { label: 'Milestones', href: '/products/milestones' },
+  { label: 'Holidays', href: '/products/holidays' },
+  { label: 'Weddings', href: '/products/weddings' },
+  { label: 'Custom', href: '/products/custom' }
 ];
 
-const footerCompany = ['About', 'Testimonials', 'FAQ', 'Contact'];
-const footerConnect = ['Instagram', 'Email', 'Facebook'];
+const footerCompany = [
+  { label: 'Shop Products', href: '/products' },
+  { label: 'Installation Guide', href: '/installation-guide' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' }
+];
+
+const footerConnect = [
+  { label: 'Instagram', href: 'https://www.instagram.com/smallsandpetite' },
+  { label: 'Email', href: 'mailto:hello@smallsandpetite.com' },
+  { label: 'Facebook', href: 'https://www.facebook.com/smallsandpetite' }
+];
 </script>
 
 <style scoped>
@@ -105,6 +122,15 @@ const footerConnect = ['Instagram', 'Email', 'Facebook'];
   flex-direction: column;
   gap: 10px;
   font-size: 0.95rem;
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }
 
 .footer-bottom {

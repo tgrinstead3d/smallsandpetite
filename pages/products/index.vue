@@ -1,29 +1,35 @@
 <template>
-  <div class="products-page">
-    <header class="products-page__header">
-      <h1 class="products-page__title">Shop by Occasion</h1>
-      <p class="products-page__subtitle">
-        Explore our illustrated yard sign collections curated for every milestone, from big birthdays to custom celebrations.
-      </p>
-    </header>
+  <div class="products-page-wrapper">
+    <div class="products-page">
+      <header class="products-page__header">
+        <h1 class="products-page__title">Shop by Occasion</h1>
+        <p class="products-page__subtitle">
+          Explore our illustrated yard sign collections curated for every milestone, from big birthdays to custom celebrations.
+        </p>
+      </header>
 
-    <nav class="products-page__nav" aria-label="Product categories">
-      <NuxtLink
-        v-for="category in categories"
-        :key="category.slug"
-        :to="`/products/${category.slug}`"
-        class="category-link"
-      >
-        <span class="category-link__title">{{ category.title }}</span>
-        <span class="category-link__cta">Browse collection</span>
-      </NuxtLink>
-    </nav>
+      <nav class="products-page__nav" aria-label="Product categories">
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.slug"
+          :to="`/products/${category.slug}`"
+          class="category-link"
+        >
+          <span class="category-link__title">{{ category.title }}</span>
+          <span class="category-link__cta">Browse collection</span>
+        </NuxtLink>
+      </nav>
+    </div>
+
+    <FooterSection />
   </div>
 </template>
 
 <script setup lang="ts">
 import { PRODUCT_CATEGORIES } from '~/data/categories'
 import { useProducts } from '~/composables/useProducts'
+
+import FooterSection from '~/components/FooterSection.vue'
 
 const { uniqueCategories } = useProducts()
 
@@ -33,19 +39,27 @@ const categories = PRODUCT_CATEGORIES.filter((category) =>
 </script>
 
 <style scoped>
+.products-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .products-page {
   display: flex;
   flex-direction: column;
   gap: 56px;
-  padding: 120px 60px 80px;
-  margin-left: 260px;
+  padding: clamp(100px, 12vw, 140px) clamp(32px, 6vw, 80px) clamp(60px, 8vw, 100px);
+  flex: 1 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .products-page__header {
-  max-width: 640px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .products-page__title {
@@ -61,12 +75,13 @@ const categories = PRODUCT_CATEGORIES.filter((category) =>
   line-height: 1.8;
   color: #757472;
   font-family: 'Proxima Nova', 'proxima-nova', Helvetica, Arial, sans-serif;
+  max-width: 720px;
 }
 
 .products-page__nav {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(20px, 3vw, 32px);
 }
 
 .category-link {
@@ -101,7 +116,6 @@ const categories = PRODUCT_CATEGORIES.filter((category) =>
 
 @media (max-width: 1024px) {
   .products-page {
-    margin-left: 0;
     padding: 120px 40px 80px;
   }
 }

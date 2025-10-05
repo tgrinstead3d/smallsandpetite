@@ -1,19 +1,23 @@
 <template>
-  <div v-if="category" class="category-page">
-    <header class="category-page__header">
-      <p class="category-page__eyebrow">{{ category.title }}</p>
-      <h1 class="category-page__title">{{ category.headline }}</h1>
-      <p class="category-page__description">{{ category.description }}</p>
-    </header>
+  <div v-if="category" class="category-page-wrapper">
+    <div class="category-page">
+      <header class="category-page__header">
+        <p class="category-page__eyebrow">{{ category.title }}</p>
+        <h1 class="category-page__title">{{ category.headline }}</h1>
+        <p class="category-page__description">{{ category.description }}</p>
+      </header>
 
-    <section class="category-page__products">
-      <ProductCard
-        v-for="product in categoryProducts"
-        :key="product.handle"
-        :product="product"
-        :category-slug="category.slug"
-      />
-    </section>
+      <section class="category-page__products">
+        <ProductCard
+          v-for="product in categoryProducts"
+          :key="product.handle"
+          :product="product"
+          :category-slug="category.slug"
+        />
+      </section>
+    </div>
+
+    <FooterSection />
   </div>
   <ErrorSection v-else description="We couldn’t find this category. Please choose another collection from the menu." />
 </template>
@@ -23,6 +27,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ProductCard from '~/components/ProductCard.vue'
 import ErrorSection from '~/components/ErrorSection.vue'
+import FooterSection from '~/components/FooterSection.vue'
 import { PRODUCT_CATEGORIES, findCategoryBySlug } from '~/data/categories'
 import { useProducts } from '~/composables/useProducts'
 
@@ -37,23 +42,30 @@ const categoryProducts = computed(() => byCategorySlug(slug.value))
 </script>
 
 <style scoped>
+.category-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .category-page {
   display: flex;
   flex-direction: column;
   gap: clamp(40px, 5vw, 64px);
-  width: min(1600px, 100%);
-  margin: 0 auto;
-  padding: clamp(48px, 8vw, 120px) clamp(20px, 6vw, 80px) clamp(40px, 6vw, 80px);
+  width: 100%;
+  margin: 0;
+  padding: clamp(100px, 12vw, 140px) clamp(24px, 6vw, 90px) clamp(60px, 8vw, 100px);
   box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .category-page__header {
-  max-width: clamp(640px, 60%, 820px);
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
   text-align: center;
+  width: 100%;
 }
 
 .category-page__eyebrow {
@@ -63,6 +75,7 @@ const categoryProducts = computed(() => byCategorySlug(slug.value))
   font-size: 0.95rem;
   font-family: 'Relation One', sans-serif;
   color: #757472;
+  text-align: center;
 }
 
 .category-page__title {

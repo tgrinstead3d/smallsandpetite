@@ -186,14 +186,17 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  max-width: 1200px;
+  max-width: none;
+  width: min(1400px, 100%);
   margin: 0 auto;
+  padding: clamp(48px, 6vw, 80px);
+  box-sizing: border-box;
 }
 
 .variants__header {
   text-align: center;
-  max-width: 720px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -217,8 +220,8 @@ onBeforeUnmount(() => {
 
 .variants__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: clamp(20px, 3vw, 32px);
 }
 
 .variant-card {
@@ -258,10 +261,9 @@ onBeforeUnmount(() => {
 
 .variant-card__header {
   display: flex;
-  gap: 12px;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
   align-items: flex-start;
-  flex-wrap: wrap;
 }
 
 .variant-card__title {
@@ -277,7 +279,6 @@ onBeforeUnmount(() => {
   font-size: 1.05rem;
   color: #5f5d5b;
   font-weight: 600;
-  white-space: nowrap;
 }
 
 .variant-card__image-wrapper {

@@ -223,7 +223,6 @@
                         </div>
                     </article>
                 </div>
-                <button class="secondary-button">Browse All Occasions</button>
             </section>
 
             <section class="testimonials-section">
@@ -305,7 +304,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import bg1 from '~/assets/bg1.jpg';
 import bg2 from '~/assets/bg2.png';
@@ -362,40 +361,57 @@ const images = [
 ];
 
 const currentSlide = ref(0);
-let slideInterval = null;
+let slideInterval: ReturnType<typeof setInterval> | null = null;
+const SLIDE_DURATION = 5000;
 
-const nextSlide = () => {
-    currentSlide.value = (currentSlide.value + 1) % images.length;
-};
-
-const prevSlide = () => {
-    currentSlide.value = (currentSlide.value - 1 + images.length) % images.length;
-};
-
-const setSlide = (index) => {
-    currentSlide.value = index;
-};
-
-const occasions = [
+const baseOccasions = [
     {
         title: 'Birthdays',
         description: 'Make every age feel larger than life with colorful, custom yard greetings.',
-        image: 'https://via.placeholder.com/320x220?text=Birthdays'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/630636cc0fc9bdbb34b08392_MERMAIDS_(large)-birthday.png'
     },
     {
-        title: 'Baby Showers',
+        title: 'Showers',
         description: 'Welcome new arrivals with sweet storks, tiny shoes, and a burst of joy.',
-        image: 'https://via.placeholder.com/320x220?text=Baby+Showers'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e38b1bb414648227744_BLOOMING-SUNFLOWER_(medium)-baby-shower.png'
     },
     {
         title: 'Graduations',
         description: 'Celebrate the grad with school colors, caps, and cheers from the lawn.',
-        image: 'https://via.placeholder.com/320x220?text=Graduations'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf63d0d0e402b8fdb9d6d_5TH-GRADE-GRADUATION-(medium).png'
     },
     {
         title: 'Holidays',
         description: 'Deck the yard for every season with festive displays and twinkling details.',
-        image: 'https://via.placeholder.com/320x220?text=Holidays'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8fbcbefca7c7a1368181_Halloween-(medium).png'
+    }
+];
+
+const extraOccasions = [
+    {
+        title: 'Birth Announcements',
+        description: 'Share your newest arrival with an adorable lawn greeting tailored to your family.',
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e78a30e6e9206640e4c_BLOOMING-SUNFLOWER_(mini)-birth-annoucement.png'
+    },
+    {
+        title: 'School Events',
+        description: 'Kick off the school year or celebrate teams with spirited designs.',
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf53f8dd02f394b9cc160_BACK-TO-SCHOOL.png'
+    },
+    {
+        title: 'Milestones',
+        description: 'Mark anniversaries, retirements, baptisms, and more with thoughtful displays.',
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/626605fb56a98be526e6f66a_BAPTISM_(medium).png'
+    },
+    {
+        title: 'Weddings',
+        description: 'Welcome guests and celebrate love stories with elegant signage.',
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64d98e9c74f7cd98ee8ca389_OLIVE-BRANCH-WEDDING_(medium)2.png'
+    },
+    {
+        title: 'Custom',
+        description: 'Dream up a completely unique yard greeting with our design team.',
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64dae9711e6093161e448f80_GOLF-(medium)-birthday.png'
     }
 ];
 
@@ -417,19 +433,42 @@ const testimonials = [
     }
 ];
 
+const occasions = [...baseOccasions, ...extraOccasions];
+
 const currentYear = new Date().getFullYear();
 
 // Auto-advance slides
 onMounted(() => {
     preloadFonts();
-    slideInterval = setInterval(() => {
-        nextSlide();
-    }, 5000); // Change slide every 5 seconds
+    startSlideInterval();
 });
 
 onBeforeUnmount(() => {
     if (slideInterval) clearInterval(slideInterval);
 });
+
+const startSlideInterval = () => {
+    if (!process.client) return;
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+        currentSlide.value = (currentSlide.value + 1) % images.length;
+    }, SLIDE_DURATION);
+};
+
+const nextSlide = () => {
+    currentSlide.value = (currentSlide.value + 1) % images.length;
+    startSlideInterval();
+};
+
+const prevSlide = () => {
+    currentSlide.value = (currentSlide.value - 1 + images.length) % images.length;
+    startSlideInterval();
+};
+
+const setSlide = (index: number) => {
+    currentSlide.value = index;
+    startSlideInterval();
+};
 </script>
 
 <style scoped>

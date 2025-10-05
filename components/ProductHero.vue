@@ -67,10 +67,10 @@ const heroStyles = computed(() => ({
   border-radius: 32px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(214, 210, 203, 0.6);
   color: #5f5d5b;
-  width: 100%;
-  max-width: 1400px;
+  width: min(1400px, 100%);
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -113,7 +113,7 @@ const heroStyles = computed(() => ({
   font-size: 1.05rem;
   line-height: 1.8;
   color: #6c6a68;
-  max-width: 620px;
+  max-width: 680px;
   font-family: 'Proxima Nova', 'proxima-nova', Helvetica, Arial, sans-serif;
 }
 
@@ -151,13 +151,6 @@ const heroStyles = computed(() => ({
   color: #757472;
   font-family: 'Relation Two', sans-serif;
   font-size: 1.4rem;
-}
-
-@media (max-width: 1024px) {
-  .product-hero {
-    width: 100%;
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 768px) {

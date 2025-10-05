@@ -1,66 +1,68 @@
 <template>
-  <div class="install-page">
-    <header class="install-hero">
-      <div class="install-hero__content">
-        <p class="install-hero__eyebrow">Installation Guide</p>
-        <h1 class="install-hero__title">Set Up Your Celebration</h1>
-        <p class="install-hero__subtitle">
-          Follow these simple steps to assemble and display your custom yard signs. Each kit includes everything
-          you need for a show-stopping celebration.
-        </p>
+  <div class="install-page-wrapper">
+    <div class="install-page">
+      <header class="install-hero">
+        <div class="install-hero__content">
+          <p class="install-hero__eyebrow">Installation Guide</p>
+          <h1 class="install-hero__title">Set Up Your Celebration</h1>
+          <p class="install-hero__subtitle">
+            Follow these simple steps to assemble and display your custom yard signs. Each kit includes everything
+            you need for a show-stopping celebration.
+          </p>
 
-        <div class="install-meta">
-          <div class="install-meta__item">
-            <span class="install-meta__label">Assembly time:</span>
-            <span class="install-meta__value">20-30 Minutes</span>
+          <div class="install-meta">
+            <div class="install-meta__item">
+              <span class="install-meta__label">Assembly time:</span>
+              <span class="install-meta__value">20-30 Minutes</span>
+            </div>
+            <a class="install-meta__link" href="#">Download PDF</a>
           </div>
-          <a class="install-meta__link" href="#">Download PDF</a>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main class="install-content">
-      <section class="install-steps">
-        <div class="install-step" v-for="(step, index) in steps" :key="`step-${index}`">
-          <div class="install-step__header">
-            <div class="install-step__badge">Step {{ index + 1 }}</div>
-            <h2 class="install-step__title">{{ step.title }}</h2>
+      <main class="install-content">
+        <section class="install-steps">
+          <div class="install-step" v-for="(step, index) in steps" :key="`step-${index}`">
+            <div class="install-step__header">
+              <div class="install-step__badge">Step {{ index + 1 }}</div>
+              <h2 class="install-step__title">{{ step.title }}</h2>
+            </div>
+            <p class="install-step__description">{{ step.description }}</p>
+
+            <ul v-if="step.tips?.length" class="install-step__tips">
+              <li v-for="(tip, i) in step.tips" :key="`tip-${index}-${i}`">{{ tip }}</li>
+            </ul>
           </div>
-          <p class="install-step__description">{{ step.description }}</p>
+        </section>
 
-          <ul v-if="step.tips?.length" class="install-step__tips">
-            <li v-for="(tip, i) in step.tips" :key="`tip-${index}-${i}`">{{ tip }}</li>
-          </ul>
+        <aside class="install-advice">
+          <div class="install-advice__card">
+            <h3>Helpful Reminders</h3>
+            <ul>
+              <li>Firmly press stakes into the ground using the horizontal bar for leverage.</li>
+              <li>If the ground is dry, lightly water the area to make installation easier.</li>
+              <li>Avoid electrical lines, irrigation systems, and invisible fencing.</li>
+              <li>Once the celebration wraps, the signs and stakes are 100% recyclable.</li>
+              <li>Share your setup with us on Instagram and Facebook &mdash; we love seeing your celebrations!</li>
+            </ul>
+          </div>
+        </aside>
+      </main>
+
+      <section class="install-cta">
+        <div class="install-cta__content">
+          <h2>Need a hand?</h2>
+          <p>
+            We can install local orders for a small fee. Let us know when you place your order, and we will coordinate the
+            details.
+          </p>
+          <div class="install-cta__actions">
+            <a class="install-cta__button" href="/contact">Contact Us</a>
+            <a class="install-cta__link" href="/faq">Visit FAQ</a>
+          </div>
         </div>
       </section>
-
-      <aside class="install-advice">
-        <div class="install-advice__card">
-          <h3>Helpful Reminders</h3>
-          <ul>
-            <li>Firmly press stakes into the ground using the horizontal bar for leverage.</li>
-            <li>If the ground is dry, lightly water the area to make installation easier.</li>
-            <li>Avoid electrical lines, irrigation systems, and invisible fencing.</li>
-            <li>Once the celebration wraps, the signs and stakes are 100% recyclable.</li>
-            <li>Share your setup with us on Instagram and Facebook &mdash; we love seeing your celebrations!</li>
-          </ul>
-        </div>
-      </aside>
-    </main>
-
-    <section class="install-cta">
-      <div class="install-cta__content">
-        <h2>Need a hand?</h2>
-        <p>
-          We can install local orders for a small fee. Let us know when you place your order, and we will coordinate the
-          details.
-        </p>
-        <div class="install-cta__actions">
-          <a class="install-cta__button" href="/contact">Contact Us</a>
-          <a class="install-cta__link" href="/faq">Visit FAQ</a>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <FooterSection />
   </div>
@@ -103,19 +105,31 @@ const steps = [
 </script>
 
 <style scoped>
+.install-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .install-page {
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  padding-bottom: 80px;
+  gap: clamp(48px, 6vw, 80px);
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 120px) clamp(24px, 6vw, 80px) clamp(40px, 6vw, 80px);
+  box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .install-hero {
   background: linear-gradient(135deg, rgba(117, 116, 114, 0.08), rgba(117, 116, 114, 0.15));
-  padding: 60px 48px;
-  border-radius: 0 0 24px 24px;
+  padding: clamp(48px, 6vw, 80px);
+  border-radius: 32px;
   width: 100%;
   box-sizing: border-box;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(214, 210, 203, 0.6);
 }
 
 .install-hero__content {
@@ -193,7 +207,6 @@ const steps = [
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
   gap: 32px;
-  padding: 0 48px;
   box-sizing: border-box;
 }
 
@@ -292,9 +305,8 @@ const steps = [
 }
 
 .install-cta {
-  padding: 0 48px;
-  box-sizing: border-box;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .install-cta__content {
@@ -371,20 +383,18 @@ const steps = [
 }
 
 @media (max-width: 900px) {
+  .install-page {
+    padding: clamp(48px, 8vw, 80px) clamp(16px, 6vw, 40px) clamp(40px, 6vw, 60px);
+    gap: 48px;
+  }
+
   .install-hero {
     padding: 48px 24px;
   }
 
-  .install-hero__content {
-    padding: 0 12px;
-  }
-
   .install-content {
-    padding: 0 24px;
-  }
-
-  .install-cta {
-    padding: 0 24px;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
   .install-cta__content {
@@ -409,6 +419,11 @@ const steps = [
 
   .install-advice__card {
     padding: 28px;
+  }
+
+  .install-hero,
+  .install-cta__content {
+    border-radius: 24px;
   }
 }
 </style>

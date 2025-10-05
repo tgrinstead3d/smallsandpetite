@@ -1,29 +1,31 @@
 <template>
-  <div v-if="product && category" class="product-page">
-    <ProductHero :product="product" :category="category">
-      <template #meta>
-        <div class="product-meta">
-          <span v-for="tag in displayTags" :key="tag" class="product-meta__tag">{{ tag }}</span>
-        </div>
-      </template>
-    </ProductHero>
+  <div v-if="product && category" class="product-page-wrapper">
+    <div class="product-page">
+      <ProductHero :product="product" :category="category">
+        <template #meta>
+          <div class="product-meta">
+            <span v-for="tag in displayTags" :key="tag" class="product-meta__tag">{{ tag }}</span>
+          </div>
+        </template>
+      </ProductHero>
 
-    <main class="product-page__content">
-      <ProductVariants :variants="product.variants" :product="product" />
+      <main class="product-page__content">
+        <ProductVariants :variants="product.variants" :product="product" />
 
-      <section class="product-page__details">
-        <h2 class="product-page__details-title">What’s Included</h2>
-        <p class="product-page__details-text">
-          Each package is professionally designed, printed, and prepared to arrive ready for installation. Yard stakes and supporting hardware are included with every physical order.
-        </p>
+        <section class="product-page__details">
+          <h2 class="product-page__details-title">What’s Included</h2>
+          <p class="product-page__details-text">
+            Each package is professionally designed, printed, and prepared to arrive ready for installation. Yard stakes and supporting hardware are included with every physical order.
+          </p>
 
-        <ul class="product-page__feature-list">
-          <li class="product-page__feature">Weather-resistant, high-quality corrugated plastic signage</li>
-          <li class="product-page__feature">Custom personalization available during checkout</li>
-          <li class="product-page__feature">Optional photo add-ons for select collections</li>
-        </ul>
-      </section>
-    </main>
+          <ul class="product-page__feature-list">
+            <li class="product-page__feature">Weather-resistant, high-quality corrugated plastic signage</li>
+            <li class="product-page__feature">Custom personalization available during checkout</li>
+            <li class="product-page__feature">Optional photo add-ons for select collections</li>
+          </ul>
+        </section>
+      </main>
+    </div>
 
     <FooterSection />
   </div>
@@ -60,14 +62,21 @@ const displayTags = computed(() => {
 </script>
 
 <style scoped>
+.product-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .product-page {
   display: flex;
   flex-direction: column;
   gap: clamp(48px, 6vw, 80px);
-  width: min(1600px, 100%);
-  margin: 0 auto;
-  padding: clamp(48px, 8vw, 120px) clamp(24px, 6vw, 80px) clamp(40px, 6vw, 80px);
+  width: 100%;
+  margin: 0;
+  padding: clamp(48px, 8vw, 120px) 0 clamp(40px, 6vw, 80px);
   box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .product-meta {
@@ -90,19 +99,21 @@ const displayTags = computed(() => {
   flex-direction: column;
   gap: clamp(32px, 5vw, 48px);
   width: 100%;
+  align-items: center;
 }
 
 .product-page__details {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: clamp(32px, 3vw, 40px);
-  border-radius: 24px;
+  padding: clamp(48px, 6vw, 80px);
+  border-radius: 32px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 244, 241, 0.96));
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(214, 210, 203, 0.5);
-  width: 100%;
-  margin: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(214, 210, 203, 0.6);
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .product-page__details-title {
@@ -147,7 +158,7 @@ const displayTags = computed(() => {
 
 @media (max-width: 768px) {
   .product-page {
-    padding: 90px 24px 60px;
+    padding: 90px 0 60px;
     gap: 56px;
   }
 

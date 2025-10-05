@@ -50,9 +50,15 @@
                 <div class="mobile-menu-section">
                     <div class="mobile-menu-heading">Products</div>
                     <div class="mobile-product-list">
-                        <div class="mobile-product-item" v-for="(item, index) in productItems" :key="`mobile-${index}`">
-                            {{ item }}
-                        </div>
+                        <NuxtLink
+                            v-for="(item, index) in productItems"
+                            :key="`mobile-${index}`"
+                            :to="item.href"
+                            class="mobile-product-item"
+                            @click="closeMenu"
+                        >
+                            {{ item.label }}
+                        </NuxtLink>
                     </div>
                 </div>
 
@@ -77,18 +83,19 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 const mobileMenuOpen = ref(false);
 
 const productItems = [
-    'Birthdays',
-    'Birth Announcements',
-    'Graduations',
-    'School Events',
-    'Showers',
-    'Milestones',
-    'Holidays',
-    'Weddings',
-    'Custom'
+    { label: 'Birthdays', href: '/products/birthdays' },
+    { label: 'Birth Announcements', href: '/products/birth-announcements' },
+    { label: 'Graduations', href: '/products/graduations' },
+    { label: 'School Events', href: '/products/school-events' },
+    { label: 'Showers', href: '/products/showers' },
+    { label: 'Milestones', href: '/products/milestones' },
+    { label: 'Holidays', href: '/products/holidays' },
+    { label: 'Weddings', href: '/products/weddings' },
+    { label: 'Custom', href: '/products/custom' }
 ];
 
 const secondaryLinks = [
+    { label: 'Shop Products', to: '/products' },
     { label: 'Installation Guide', to: '/installation-guide' },
     { label: 'Contact', to: '/contact' },
     { label: 'FAQ', to: '/faq' }
@@ -306,6 +313,8 @@ onBeforeUnmount(() => {
     font-family: 'proxima-nova', sans-serif;
     color: #757472;
     font-size: 0.95rem;
+    transition: color 0.2s ease;
+    text-decoration: none;
 }
 
 .mobile-menu .instagram-link,
@@ -324,14 +333,6 @@ onBeforeUnmount(() => {
 .mobile-menu .instagram-link:hover,
 .mobile-menu .contact-button:hover {
     background-color: #5f5d5b;
-}
-
-.mobile-product-item,
-.mobile-link-item {
-    font-family: 'proxima-nova', sans-serif;
-    color: #757472;
-    font-size: 0.95rem;
-    transition: color 0.2s ease;
 }
 
 .menu-fade-enter-active,

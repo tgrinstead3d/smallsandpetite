@@ -44,7 +44,7 @@ body.no-scroll {
 .content-area {
   width: 100%;
   margin-left: 0;
-  padding: 20px 48px 0;
+  padding: 20px 0 0;
   box-sizing: border-box;
   margin-top: 0;
   flex: 0 0 auto;
@@ -52,7 +52,7 @@ body.no-scroll {
 
 @media (max-width: 1024px) {
   .content-area {
-    padding: 20px 32px 0;
+    padding: 20px 0 0;
   }
 }
 
@@ -64,7 +64,7 @@ body.no-scroll {
   .content-area {
     width: 100%;
     margin-left: 0;
-    padding: 20px 24px 0;
+    padding: 20px 0 0;
   }
 }
 </style>

@@ -3,58 +3,60 @@
   text-decoration: none;
 }
 <template>
-  <div class="faq-page">
-    <header class="faq-hero">
-      <div class="faq-hero__content">
-        <p class="faq-hero__eyebrow">FAQ</p>
-        <h1 class="faq-hero__title">Frequently Asked Questions</h1>
-        <p class="faq-hero__subtitle">
-          Find answers about our custom yard signs, ordering, installation, and more.
-        </p>
-      </div>
-    </header>
-
-    <main class="faq-content">
-      <section class="faq-group">
-        <h2 class="faq-group__title">General</h2>
-        <div v-for="(item, index) in generalFaqs" :key="`general-${index}`" class="faq-item">
-          <h3 class="faq-item__question">{{ item.question }}</h3>
-          <p class="faq-item__answer" v-html="item.answer"></p>
-        </div>
-      </section>
-
-      <section class="faq-group">
-        <h2 class="faq-group__title">Ordering</h2>
-        <div v-for="(item, index) in orderingFaqs" :key="`ordering-${index}`" class="faq-item">
-          <h3 class="faq-item__question">{{ item.question }}</h3>
-          <p class="faq-item__answer" v-html="item.answer"></p>
-        </div>
-      </section>
-
-      <section class="faq-group">
-        <h2 class="faq-group__title">Installation & Care</h2>
-        <div v-for="(item, index) in installationFaqs" :key="`installation-${index}`" class="faq-item">
-          <h3 class="faq-item__question">{{ item.question }}</h3>
-          <p class="faq-item__answer" v-html="item.answer"></p>
-        </div>
-      </section>
-    </main>
-
-    <aside class="faq-cta">
-      <div class="faq-cta__content">
-        <div class="faq-cta-inner">
-          <h2>Still have questions?</h2>
-          <p>
-            We are happy to help you plan the perfect celebration. Reach out and our team will get back to
-            you soon.
+  <div class="faq-page-wrapper">
+    <div class="faq-page">
+      <header class="faq-hero">
+        <div class="faq-hero__content">
+          <p class="faq-hero__eyebrow">FAQ</p>
+          <h1 class="faq-hero__title">Frequently Asked Questions</h1>
+          <p class="faq-hero__subtitle">
+            Find answers about our custom yard signs, ordering, installation, and more.
           </p>
-          <div class="faq-cta__actions">
-            <a class="faq-cta__button" href="/contact">Contact Us</a>
-            <a class="faq-cta__link" href="/installation-guide">Installation Guide</a>
+        </div>
+      </header>
+
+      <main class="faq-content">
+        <section class="faq-group">
+          <h2 class="faq-group__title">General</h2>
+          <div v-for="(item, index) in generalFaqs" :key="`general-${index}`" class="faq-item">
+            <h3 class="faq-item__question">{{ item.question }}</h3>
+            <p class="faq-item__answer" v-html="item.answer"></p>
+          </div>
+        </section>
+
+        <section class="faq-group">
+          <h2 class="faq-group__title">Ordering</h2>
+          <div v-for="(item, index) in orderingFaqs" :key="`ordering-${index}`" class="faq-item">
+            <h3 class="faq-item__question">{{ item.question }}</h3>
+            <p class="faq-item__answer" v-html="item.answer"></p>
+          </div>
+        </section>
+
+        <section class="faq-group">
+          <h2 class="faq-group__title">Installation & Care</h2>
+          <div v-for="(item, index) in installationFaqs" :key="`installation-${index}`" class="faq-item">
+            <h3 class="faq-item__question">{{ item.question }}</h3>
+            <p class="faq-item__answer" v-html="item.answer"></p>
+          </div>
+        </section>
+      </main>
+
+      <aside class="faq-cta">
+        <div class="faq-cta__content">
+          <div class="faq-cta-inner">
+            <h2>Still have questions?</h2>
+            <p>
+              We are happy to help you plan the perfect celebration. Reach out and our team will get back to
+              you soon.
+            </p>
+            <div class="faq-cta__actions">
+              <a class="faq-cta__button" href="/contact">Contact Us</a>
+              <a class="faq-cta__link" href="/installation-guide">Installation Guide</a>
+            </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </div>
 
     <FooterSection />
   </div>
@@ -148,19 +150,31 @@ const installationFaqs = [
 
 <style scoped>
 
+.faq-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .faq-page {
   display: flex;
   flex-direction: column;
-  gap: 60px;
-  padding-bottom: 60px;
-  align-items: center;
+  gap: clamp(48px, 6vw, 80px);
+  width: min(1600px, 100%);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 120px) clamp(24px, 6vw, 80px) clamp(40px, 6vw, 80px);
+  box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .faq-hero {
   background: linear-gradient(135deg, rgba(117, 116, 114, 0.08), rgba(117, 116, 114, 0.15));
-  padding: 60px 48px;
-  border-radius: 0 0 24px 24px;
+  padding: clamp(48px, 6vw, 80px);
+  border-radius: 32px;
   width: 100%;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(214, 210, 203, 0.6);
+  box-sizing: border-box;
 }
 
 .faq-hero__content,
@@ -175,7 +189,7 @@ const installationFaqs = [
 .faq-hero__content {
   text-align: center;
   color: #757472;
-  padding: 0 48px;
+  padding: 0 clamp(16px, 4vw, 48px);
 }
 
 .faq-hero__eyebrow {
@@ -204,7 +218,6 @@ const installationFaqs = [
 .faq-content {
   display: grid;
   gap: 48px;
-  padding: 0 48px;
 }
 
 .faq-group {
@@ -253,6 +266,7 @@ const installationFaqs = [
 
 .faq-cta {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .faq-cta__content {
@@ -329,36 +343,29 @@ const installationFaqs = [
 }
 
 @media (max-width: 900px) {
+  .faq-page {
+    padding: clamp(48px, 8vw, 80px) clamp(16px, 6vw, 40px) clamp(40px, 6vw, 60px);
+    gap: 48px;
+  }
+
   .faq-hero {
     padding: 48px 24px;
   }
 
-  .faq-content {
-    padding: 0 24px;
-    max-width: none;
-    width: 100%;
+  .faq-hero__content {
+    padding: 0 16px;
   }
 
-  .faq-hero__content {
-    padding: 0 24px;
+  .faq-content {
+    gap: 40px;
   }
 
   .faq-group {
     padding: 32px 24px;
   }
 
-  .faq-cta {
-    padding: 0;
-    width: 100%;
-  }
-
   .faq-cta__content {
-    padding: 36px 0;
-  }
-
-  .faq-cta__content > .faq-cta-inner {
-    max-width: none;
-    padding: 0 24px;
+    padding: 36px 24px;
   }
 }
 
@@ -369,6 +376,11 @@ const installationFaqs = [
 
   .faq-item__answer {
     font-size: 0.95rem;
+  }
+
+  .faq-hero,
+  .faq-cta__content {
+    border-radius: 24px;
   }
 }
 </style>
