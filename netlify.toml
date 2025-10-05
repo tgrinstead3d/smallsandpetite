@@ -1,5 +1,5 @@
 [build]
-  command = "npm run netlify && ls -la .output/ && ls -la .output/public/ || (mkdir -p .output/public && cp index.html .output/public/)"
+  command = "npm run netlify"
   publish = ".output/public"
   
 [build.environment]
@@ -9,6 +9,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
   
 [[headers]]
   for = "/assets/*"
