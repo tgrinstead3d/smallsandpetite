@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smalls & Petite</title>
+  <meta name="description" content="Smalls & Petite – premium pet essentials and accessories.">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #f6f2ff 0%, #fff 100%);
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    main {
+      max-width: 640px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(54, 32, 101, 0.12);
+      padding: 3rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: #352366;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      color: rgba(26, 26, 26, 0.8);
+    }
+
+    a {
+      color: #5b34c8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: rgba(26, 26, 26, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Smalls & Petite</h1>
+    <p>The Nuxt application is getting ready. If you expected the full experience, make sure the development server is running or deploy the latest build.</p>
+    <p>
+      Try <a href="https://nuxt.com/docs/get-started/installation" target="_blank" rel="noreferrer">Nuxt documentation</a>
+      or run <code>npm run dev</code> to start the local app.
+    </p>
+    <footer>&copy; <span id="year"></span> Smalls & Petite. All rights reserved.</footer>
+  </main>
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear().toString();
+    }
+  </script>
+</body>
+</html>
