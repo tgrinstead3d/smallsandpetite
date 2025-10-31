@@ -1,20 +1,15 @@
 <template>
-  <div class="app-container">
-    <FontLoader />
-    <NuxtRouteAnnouncer />
-    <Navigation />
-    <SideNavigation />
-    <div class="content-area">
-      <NuxtPage />
+  <div class="maintenance-page">
+    <div class="maintenance-card">
+      <h1>We&apos;ll be back soon.</h1>
+      <p>smallsandpetite.com is undergoing maintenance and will be back online shortly.</p>
+      <p class="cta">
+        In the meantime you can shop through our
+        <a href="https://instagram.com/smallsandpetite" target="_blank" rel="noopener">Instagram</a>.
+      </p>
     </div>
   </div>
 </template>
-
-<script setup>
-import FontLoader from '~/components/FontLoader.vue';
-import Navigation from '~/components/Navigation.vue';
-import SideNavigation from '~/components/SideNavigation.vue';
-</script>
 
 <style>
 html,
@@ -22,49 +17,65 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  overflow-x: hidden;
-  font-family: 'proxima-nova', Arial, sans-serif;
-}
-
-body.no-scroll {
   overflow: hidden;
+  font-family: 'proxima-nova', Arial, sans-serif;
+  background: #f7f3f0;
+  color: #201a16;
 }
 
-.app-container {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  padding-left: 250px;
-  padding-top: 80px;
-  box-sizing: border-box;
+.maintenance-page {
   display: flex;
-  flex-direction: column;
-}
-
-.content-area {
-  width: 100%;
-  margin-left: 0;
-  padding: 20px 0 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px;
   box-sizing: border-box;
-  margin-top: 0;
-  flex: 0 0 auto;
 }
 
-@media (max-width: 1024px) {
-  .content-area {
-    padding: 20px 0 0;
-  }
+.maintenance-card {
+  max-width: 480px;
+  background: #fff;
+  padding: 48px 36px;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 900px) {
-  .app-container {
-    padding-left: 0;
+.maintenance-card h1 {
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+
+.maintenance-card p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.maintenance-card .cta {
+  margin-top: 24px;
+  font-weight: 600;
+}
+
+.maintenance-card a {
+  color: #b37a5c;
+  text-decoration: none;
+}
+
+.maintenance-card a:hover,
+.maintenance-card a:focus-visible {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .maintenance-card {
+    padding: 36px 24px;
   }
 
-  .content-area {
-    width: 100%;
-    margin-left: 0;
-    padding: 20px 0 0;
+  .maintenance-card h1 {
+    font-size: 1.75rem;
   }
 }
 </style>
