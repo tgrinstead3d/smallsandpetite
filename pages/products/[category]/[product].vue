@@ -26,8 +26,6 @@
         </section>
       </main>
     </div>
-
-    <FooterSection />
   </div>
   <ErrorSection v-else description="We couldn’t find this product. Please select another collection from the menu." />
 </template>
@@ -38,7 +36,6 @@ import { useRoute } from 'vue-router'
 import ProductHero from '~/components/ProductHero.vue'
 import ProductVariants from '~/components/ProductVariants.vue'
 import ErrorSection from '~/components/ErrorSection.vue'
-import FooterSection from '~/components/FooterSection.vue'
 import { findCategoryBySlug } from '~/data/categories'
 import { useProducts } from '~/composables/useProducts'
 

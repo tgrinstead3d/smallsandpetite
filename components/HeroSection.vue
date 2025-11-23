@@ -1,177 +1,159 @@
 .celebrate-divider {
-    width: 1px;
-    background-color: #757472;
-    opacity: 0.6;
-    align-self: stretch;
+width: 1px;
+background-color: #757472;
+opacity: 0.6;
+align-self: stretch;
 }
 
 @media (max-width: 1200px) {
-    .celebrate-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+.celebrate-content {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
 
-    .celebrate-title {
-        flex: none;
-        margin-bottom: 20px;
-    }
+.celebrate-title {
+flex: none;
+margin-bottom: 20px;
+}
 
-    .celebrate-divider {
-        display: none;
-    }
+.celebrate-divider {
+display: none;
+}
 
-    .celebrate-description {
-        max-width: 600px;
-    }
+.celebrate-description {
+max-width: 600px;
+}
 
-    .shop-section,
-    .testimonials-section,
-    .about-section {
-        padding: 0 40px;
-    }
+.shop-section,
+.testimonials-section,
+.about-section {
+padding: 0 40px;
+}
 
-    .section-title {
-        font-size: 2.1rem;
-        letter-spacing: 0.28rem;
-    }
+.section-title {
+font-size: 2.1rem;
+letter-spacing: 0.28rem;
+}
 
-    .section-subtitle {
-        font-size: 1rem;
-    }
+.section-subtitle {
+font-size: 1rem;
+}
 
-    .testimonial-card {
-        padding: 28px;
-    }
+.testimonial-card {
+padding: 28px;
+}
 }
 
 @media (max-width: 1024px) {
-    .celebrate-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 24px;
-    }
+.celebrate-content {
+flex-direction: column;
+align-items: center;
+text-align: center;
+gap: 24px;
+}
 
-    .celebrate-title {
-        flex: none;
-        width: 100%;
-        margin-bottom: 0;
-    }
+.celebrate-title {
+flex: none;
+width: 100%;
+margin-bottom: 0;
+}
 
-    .celebrate-divider {
-        display: none;
-    }
+.celebrate-divider {
+display: none;
+}
 
-    .celebrate-description {
-        width: 100%;
-        max-width: none;
-    }
+.celebrate-description {
+width: 100%;
+max-width: none;
+}
 
-    .about-content {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 0;
-        text-align: left;
-        gap: 24px;
-    }
+.about-content {
+flex-direction: column;
+align-items: stretch;
+padding: 0;
+text-align: left;
+gap: 24px;
+}
 
-    .about-divider,
-    .about-media {
-        display: none;
-    }
+.about-divider,
+.about-media {
+display: none;
+}
 
-    .about-text {
-        padding: 0;
-    }
+.about-text {
+padding: 0;
+}
 
-    .about-text .section-title {
-        text-align: left;
-    }
+.about-text .section-title {
+text-align: left;
+}
 }
 
 @media (max-width: 768px) {
-    .hero-section {
-        margin-left: 0;
-        width: 100%;
-        margin-top: 80px;
-    }
+.hero-section {
+margin-left: 0;
+width: 100%;
+margin-top: 80px;
+}
 
-    .slideshow-container {
-        height: 60vh;
-        min-height: 360px;
-    }
+.slideshow-container {
+height: 60vh;
+min-height: 360px;
+}
 
-    .shop-section,
-    .testimonials-section,
-    .about-section {
-        padding: 0 24px;
-    }
+.shop-section,
+.testimonials-section,
+.about-section {
+padding: 0 24px;
+}
 
-    .section-title {
-        font-size: 1.9rem;
-        letter-spacing: 0.22rem;
-    }
+.section-title {
+font-size: 1.9rem;
+letter-spacing: 0.22rem;
+}
 
-    .secondary-button {
-        margin-top: 24px;
-    }
+.secondary-button {
+margin-top: 24px;
+}
 
-    .testimonial-card {
-        padding: 24px;
-    }
+.testimonial-card {
+padding: 24px;
+}
 }
 
 @media (max-width: 576px) {
-    .slideshow-container {
-        height: 55vh;
-        min-height: 300px;
-    }
+.slideshow-container {
+height: 55vh;
+min-height: 300px;
+}
 
-    .celebrate-section {
-        padding: 40px 20px;
-    }
+.celebrate-section {
+padding: 40px 20px;
+}
 
-    .celebrate-title {
-        font-size: 2.8rem;
-    }
+.celebrate-title {
+font-size: 2.8rem;
+}
 
-    .celebrate-description {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
+.celebrate-description {
+font-size: 0.95rem;
+line-height: 1.7;
+}
 
-    .section-subtitle {
-        font-size: 0.95rem;
-    }
+.section-subtitle {
+font-size: 0.95rem;
+}
 
-    .testimonial-card {
-        padding: 20px;
-    }
+.testimonial-card {
+padding: 20px;
+}
 
-    .about-text {
-        padding: 20px 0;
-    }
+.about-text {
+padding: 20px 0;
+}
 
-    .site-footer {
-        padding: 40px 20px;
-    }
 
-    .footer-top {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .footer-links {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
 }
 <template>
     <div class="hero-section">
@@ -242,8 +224,7 @@
             <section class="about-section">
                 <div class="about-content">
                     <div class="about-media">
-                        <img src="~/assets/logo.png" alt="Smalls and Petite logo"
-                            class="about-image" />
+                        <img src="~/assets/logo.png" alt="Smalls and Petite logo" class="about-image" />
                     </div>
                     <div class="about-divider" aria-hidden="true"></div>
                     <div class="about-text">
@@ -259,47 +240,6 @@
                     </div>
                 </div>
             </section>
-
-            <footer class="site-footer">
-                <div class="footer-top">
-                    <div class="footer-brand">
-                        <img src="~/assets/logo.png" alt="Smalls and Petite" class="footer-logo-image" />
-                        <p>Custom yard greetings for life’s biggest moments.</p>
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <h4>Occasions</h4>
-                            <ul>
-                                <li v-for="(occasion, index) in occasions" :key="`footer-${index}`">{{ occasion.title }}</li>
-                            </ul>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Company</h4>
-                            <ul>
-                                <li>About</li>
-                                <li>Testimonials</li>
-                                <li>FAQ</li>
-                                <li>Contact</li>
-                            </ul>
-                        </div>
-                        <div class="footer-column">
-                            <h4>Connect</h4>
-                            <ul>
-                                <li>Instagram</li>
-                                <li>Email</li>
-                                <li>Facebook</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; {{ currentYear }} Smalls &amp; Petite. All rights reserved.</span>
-                    <div class="footer-meta">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                </div>
-            </footer>
         </main>
     </div>
 </template>
@@ -754,89 +694,7 @@ const setSlide = (index: number) => {
     opacity: 0.6;
 }
 
-.site-footer {
-    background-color: #f9f8f6;
-    padding: 60px;
-    color: #757472;
-    margin-top: 0;
-}
 
-.footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.footer-brand {
-    max-width: 320px;
-}
-
-.footer-logo-image {
-    max-width: 220px;
-    margin-bottom: 16px;
-}
-
-.footer-links {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.footer-column h4 {
-    margin: 0 0 16px 0;
-    font-family: 'Relation Two', sans-serif;
-    font-size: 1.1rem;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 0.95rem;
-}
-
-.footer-bottom {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.9rem;
-}
-
-.footer-meta {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-meta a {
-    color: #757472;
-    text-decoration: none;
-    position: relative;
-}
-
-.footer-meta a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 1px;
-    background-color: #b8b7b5;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.footer-meta a:hover::after {
-    transform: scaleX(1);
-}
 
 .controls {
     position: absolute;

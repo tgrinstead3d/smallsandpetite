@@ -16,8 +16,6 @@
         />
       </section>
     </div>
-
-    <FooterSection />
   </div>
   <ErrorSection v-else description="We couldn’t find this category. Please choose another collection from the menu." />
 </template>
@@ -27,7 +25,6 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ProductCard from '~/components/ProductCard.vue'
 import ErrorSection from '~/components/ErrorSection.vue'
-import FooterSection from '~/components/FooterSection.vue'
 import { PRODUCT_CATEGORIES, findCategoryBySlug } from '~/data/categories'
 import { useProducts } from '~/composables/useProducts'
 

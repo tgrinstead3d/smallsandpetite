@@ -63,13 +63,10 @@
         </div>
       </section>
     </div>
-
-    <FooterSection />
   </div>
 </template>
 
 <script setup>
-import FooterSection from '~/components/FooterSection.vue';
 
 const steps = [
   {

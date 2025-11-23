@@ -52,14 +52,9 @@
         <button type="submit" class="contact-submit">Send Message</button>
       </form>
     </section>
-
-    <FooterSection />
   </div>
 </template>
 
-<script setup>
-import FooterSection from '~/components/FooterSection.vue';
-</script>
 
 <style scoped>
 .contact-page-wrapper {

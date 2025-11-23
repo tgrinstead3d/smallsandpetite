@@ -57,13 +57,10 @@
         </div>
       </aside>
     </div>
-
-    <FooterSection />
   </div>
 </template>
 
 <script setup>
-import FooterSection from '~/components/FooterSection.vue';
 const installationGuideLink =
   '<a class="faq-link" href="/installation-guide">Installation Guide</a>';
 
