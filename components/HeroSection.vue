@@ -1,160 +1,3 @@
-.celebrate-divider {
-width: 1px;
-background-color: #757472;
-opacity: 0.6;
-align-self: stretch;
-}
-
-@media (max-width: 1200px) {
-.celebrate-content {
-flex-direction: column;
-align-items: center;
-text-align: center;
-}
-
-.celebrate-title {
-flex: none;
-margin-bottom: 20px;
-}
-
-.celebrate-divider {
-display: none;
-}
-
-.celebrate-description {
-max-width: 600px;
-}
-
-.shop-section,
-.testimonials-section,
-.about-section {
-padding: 0 40px;
-}
-
-.section-title {
-font-size: 2.1rem;
-letter-spacing: 0.28rem;
-}
-
-.section-subtitle {
-font-size: 1rem;
-}
-
-.testimonial-card {
-padding: 28px;
-}
-}
-
-@media (max-width: 1024px) {
-.celebrate-content {
-flex-direction: column;
-align-items: center;
-text-align: center;
-gap: 24px;
-}
-
-.celebrate-title {
-flex: none;
-width: 100%;
-margin-bottom: 0;
-}
-
-.celebrate-divider {
-display: none;
-}
-
-.celebrate-description {
-width: 100%;
-max-width: none;
-}
-
-.about-content {
-flex-direction: column;
-align-items: stretch;
-padding: 0;
-text-align: left;
-gap: 24px;
-}
-
-.about-divider,
-.about-media {
-display: none;
-}
-
-.about-text {
-padding: 0;
-}
-
-.about-text .section-title {
-text-align: left;
-}
-}
-
-@media (max-width: 768px) {
-.hero-section {
-margin-left: 0;
-width: 100%;
-margin-top: 80px;
-}
-
-.slideshow-container {
-height: 60vh;
-min-height: 360px;
-}
-
-.shop-section,
-.testimonials-section,
-.about-section {
-padding: 0 24px;
-}
-
-.section-title {
-font-size: 1.9rem;
-letter-spacing: 0.22rem;
-}
-
-.secondary-button {
-margin-top: 24px;
-}
-
-.testimonial-card {
-padding: 24px;
-}
-}
-
-@media (max-width: 576px) {
-.slideshow-container {
-height: 55vh;
-min-height: 300px;
-}
-
-.celebrate-section {
-padding: 40px 20px;
-}
-
-.celebrate-title {
-font-size: 2.8rem;
-}
-
-.celebrate-description {
-font-size: 0.95rem;
-line-height: 1.7;
-}
-
-.section-subtitle {
-font-size: 0.95rem;
-}
-
-.testimonial-card {
-padding: 20px;
-}
-
-.about-text {
-padding: 20px 0;
-}
-
-
-}
 <template>
     <div class="hero-section">
         <div class="slideshow-container">
@@ -197,13 +40,14 @@ padding: 20px 0;
                         unforgettable.</p>
                 </div>
                 <div class="occasion-grid">
-                    <article v-for="(occasion, index) in occasions" :key="index" class="occasion-card">
+                    <NuxtLink v-for="(occasion, index) in occasions" :key="index" :to="occasion.link"
+                        class="occasion-card">
                         <img :src="occasion.image" :alt="occasion.title" class="occasion-image" />
                         <div class="occasion-content">
                             <h3>{{ occasion.title }}</h3>
                             <p>{{ occasion.description }}</p>
                         </div>
-                    </article>
+                    </NuxtLink>
                 </div>
             </section>
 
@@ -308,22 +152,26 @@ const baseOccasions = [
     {
         title: 'Birthdays',
         description: 'Make every age feel larger than life with colorful, custom yard greetings.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/630636cc0fc9bdbb34b08392_MERMAIDS_(large)-birthday.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/630636cc0fc9bdbb34b08392_MERMAIDS_(large)-birthday.png',
+        link: '/products/birthdays'
     },
     {
         title: 'Showers',
         description: 'Welcome new arrivals with sweet storks, tiny shoes, and a burst of joy.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e38b1bb414648227744_BLOOMING-SUNFLOWER_(medium)-baby-shower.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e38b1bb414648227744_BLOOMING-SUNFLOWER_(medium)-baby-shower.png',
+        link: '/products/showers'
     },
     {
         title: 'Graduations',
         description: 'Celebrate the grad with school colors, caps, and cheers from the lawn.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf63d0d0e402b8fdb9d6d_5TH-GRADE-GRADUATION-(medium).png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf63d0d0e402b8fdb9d6d_5TH-GRADE-GRADUATION-(medium).png',
+        link: '/products/graduations'
     },
     {
         title: 'Holidays',
         description: 'Deck the yard for every season with festive displays and twinkling details.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8fbcbefca7c7a1368181_Halloween-(medium).png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8fbcbefca7c7a1368181_Halloween-(medium).png',
+        link: '/products/holidays'
     }
 ];
 
@@ -331,27 +179,32 @@ const extraOccasions = [
     {
         title: 'Birth Announcements',
         description: 'Share your newest arrival with an adorable lawn greeting tailored to your family.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e78a30e6e9206640e4c_BLOOMING-SUNFLOWER_(mini)-birth-annoucement.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/61fe8e78a30e6e9206640e4c_BLOOMING-SUNFLOWER_(mini)-birth-annoucement.png',
+        link: '/products/birth-announcements'
     },
     {
         title: 'School Events',
         description: 'Kick off the school year or celebrate teams with spirited designs.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf53f8dd02f394b9cc160_BACK-TO-SCHOOL.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64daf53f8dd02f394b9cc160_BACK-TO-SCHOOL.png',
+        link: '/products/school-events'
     },
     {
         title: 'Milestones',
         description: 'Mark anniversaries, retirements, baptisms, and more with thoughtful displays.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/626605fb56a98be526e6f66a_BAPTISM_(medium).png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/626605fb56a98be526e6f66a_BAPTISM_(medium).png',
+        link: '/products/milestones'
     },
     {
         title: 'Weddings',
         description: 'Welcome guests and celebrate love stories with elegant signage.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64d98e9c74f7cd98ee8ca389_OLIVE-BRANCH-WEDDING_(medium)2.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64d98e9c74f7cd98ee8ca389_OLIVE-BRANCH-WEDDING_(medium)2.png',
+        link: '/products/weddings'
     },
     {
         title: 'Custom',
         description: 'Dream up a completely unique yard greeting with our design team.',
-        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64dae9711e6093161e448f80_GOLF-(medium)-birthday.png'
+        image: 'https://cdn.prod.website-files.com/6118134cf9bf692b7cf50669/64dae9711e6093161e448f80_GOLF-(medium)-birthday.png',
+        link: '/products/custom'
     }
 ];
 
@@ -552,6 +405,13 @@ const setSlide = (index: number) => {
     display: flex;
     flex-direction: column;
     min-height: 360px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.occasion-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
 .occasion-image {
@@ -783,5 +643,154 @@ const setSlide = (index: number) => {
 .instagram-button svg {
     width: 18px;
     height: 18px;
+}
+
+@media (max-width: 1200px) {
+    .celebrate-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .celebrate-title {
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .celebrate-divider {
+        display: none;
+    }
+
+    .celebrate-description {
+        max-width: 600px;
+    }
+
+    .shop-section,
+    .testimonials-section,
+    .about-section {
+        padding: 0 40px;
+    }
+
+    .section-title {
+        font-size: 2.1rem;
+        letter-spacing: 0.28rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .testimonial-card {
+        padding: 28px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .celebrate-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .celebrate-title {
+        flex: none;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .celebrate-divider {
+        display: none;
+    }
+
+    .celebrate-description {
+        width: 100%;
+        max-width: none;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        text-align: left;
+        gap: 24px;
+    }
+
+    .about-divider,
+    .about-media {
+        display: none;
+    }
+
+    .about-text {
+        padding: 0;
+    }
+
+    .about-text .section-title {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 80px;
+    }
+
+    .slideshow-container {
+        height: 60vh;
+        min-height: 360px;
+    }
+
+    .shop-section,
+    .testimonials-section,
+    .about-section {
+        padding: 0 24px;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+        letter-spacing: 0.22rem;
+    }
+
+    .secondary-button {
+        margin-top: 24px;
+    }
+
+    .testimonial-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .slideshow-container {
+        height: 55vh;
+        min-height: 300px;
+    }
+
+    .celebrate-section {
+        padding: 40px 20px;
+    }
+
+    .celebrate-title {
+        font-size: 2.8rem;
+    }
+
+    .celebrate-description {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    .about-text {
+        padding: 20px 0;
+    }
 }
 </style>
